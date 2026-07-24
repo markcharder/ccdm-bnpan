@@ -1,0 +1,48 @@
+Bootstrap: docker
+From: ubuntu:24.04
+
+%post
+
+    # Install APT dependencies.
+    apt-get --assume-yes update
+    apt-get --assume-yes install time
+    apt-get --assume-yes install locales
+    apt-get --assume-yes install samtools
+    apt-get --assume-yes install bamtools libbamtools-dev
+    apt-get --assume-yes install hisat2
+    apt-get --assume-yes install git
+    apt-get --assume-yes install build-essential
+    apt-get --assume-yes install wget
+    
+    # Configure locale
+    locale-gen en_US.UTF-8
+    update-locale LANG=en_US.UTF-8
+    
+    cd /opt
+
+    # Install sra toolkit.
+    wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.3.0/sratoolkit.3.3.0-ubuntu64.tar.gz
+    tar xvf sratoolkit.3.3.0-ubuntu64.tar.gz
+    rm sratoolkit.3.3.0-ubuntu64.tar.gz
+    mkdir -p ~/.ncbi
+    echo '/repository/user/cache-disabled = "true"' >> ~/.ncbi/user-settings.mkfg
+
+    git clone https://github.com/Gaius-Augustus/VARUS.git
+    cd VARUS/Implementation
+    make
+
+%environment
+    export VARUS_DIR=/opt/VARUS
+    export VARUS_EXAMPLE=$VARUS_DIR/example
+    export VARUS_CONFIG=$VARUS_EXAMPLE/VARUSparameters.txt
+    export PATH=$VARUS_DIR/Implementation:$VARUS_DIR/Implementation/bin:$PATH
+    export PATH=$PATH:/opt/sratoolkit.3.3.0-ubuntu64/bin
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+
+%labels
+    Author mark.email@example.com
+    Version 1.0
+
+%help
+    Container for running VARUS to retrive RNA seq from SRA.

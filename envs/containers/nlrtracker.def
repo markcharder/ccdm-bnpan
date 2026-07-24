@@ -1,0 +1,23 @@
+Bootstrap: docker
+From: mambaorg/micromamba:git-6665646-cuda11.8.0-ubuntu22.04
+
+%post
+    _entrypoint.sh micromamba config append channels conda-forge
+    _entrypoint.sh micromamba config append channels bioconda
+    _entrypoint.sh micromamba install -c conda-forge -y wget
+    _entrypoint.sh micromamba install -c conda-forge -y git
+    _entrypoint.sh micromamba install -c bioconda -y interproscan
+    _entrypoint.sh micromamba install -c bioconda -y hmmer==3.3.2
+    _entrypoint.sh micromamba install -c bioconda -c conda-forge -y r-base r-tidyverse bioconductor-biocinstaller bioconductor-biostrings
+    _entrypoint.sh micromamba install -c bioconda meme
+    export PATH="/opt/conda/bin:$PATH"
+    mkdir /opt/NLRtracker
+    cd /opt/
+    git clone https://github.com/slt666666/NLRtracker.git
+
+%environment
+    export PATH="/opt/conda/bin:$PATH"
+    export NLTPATH="/opt/NLRtracker/"
+    export NLRtracker="/opt/NLRtracker/NLRtracker.sh"
+    export APPTAINER_SHELL=/usr/local/bin/_apptainer_shell.sh
+

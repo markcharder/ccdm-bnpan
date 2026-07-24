@@ -1,0 +1,233 @@
+#heliumInput = PHENOTYPE
+LineName	Phenotype1=c	Phenotype2=q	Phenotype3=q	Phenotype4=c
+Hamburg 1	Shiga	NA	NA	Unknown
+Aomori 1	Shiga	NA	NA	Unknown
+Taisetsu	Shiga	NA	NA	Unknown
+Norin 9	Shiga	NA	NA	Unknown
+H.3	Shiga	NA	NA	Unknown
+K.8	Shiga	NA	NA	Unknown
+Norin 5	Shiga	NA	NA	Unknown
+K.9	Shiga	NA	NA	Unknown
+Norin 1	Shiga	NA	NA	Unknown
+Norin 14	Shiga	NA	NA	Unknown
+K.2	Shiga	NA	NA	Unknown
+Norin 2	Shiga	0.763415272797465	-0.6707381489472	Short read
+H.4	Shiga	NA	NA	Unknown
+H.1	Shiga	NA	NA	Unknown
+Norin 3	Shiga	NA	NA	Unknown
+Norin 6	Shiga	NA	NA	Unknown
+Norin 8	Shiga	-0.692776760674428	-0.624494260711511	Short read
+Norin 15	Shiga	NA	NA	Unknown
+Ki.24	Shiga	NA	NA	Unknown
+Ko.1409	Shiga	NA	NA	Unknown
+Miho	Shiga	NA	NA	Unknown
+H.25	Shiga	NA	NA	Unknown
+Ki.28	Shiga	NA	NA	Unknown
+K.31	Shiga	NA	NA	Unknown
+Abukuma	Shiga	NA	NA	Unknown
+Chisaya	Shiga founder	-1.29000390989939	-0.812425633674505	Long read
+Norin 4	Shiga	-1.13397727104294	-0.749740397939759	Short read
+Norin 16	Shiga	NA	NA	Unknown
+K.30	Shiga	NA	NA	Unknown
+Tsukushi	Shiga	NA	NA	Unknown
+Homan	Shiga	NA	NA	Unknown
+Aburamasari	Shiga	NA	NA	Unknown
+Norin 17	Shiga	NA	NA	Unknown
+Tk.8	Shiga	NA	NA	Unknown
+Kongo	Shiga	-1.03913594134333	-0.651869250424726	Short read
+Tokiwa	Shiga	-0.232716502505041	-0.229620308446603	Short read
+Chikuzen	Shiga founder	-1.76680435057278	-1.29253953520212	Long read
+Oomi	Shiga	-0.955343575199177	-0.65329870395688	Short read
+Dairyu	Shiga	NA	NA	Unknown
+Kogane	Shiga	NA	NA	Unknown
+Genkai	Shiga	-1.6185692682028	-1.13594713710722	Short read
+Suchiro	Shiga	NA	NA	Unknown
+Iwashiro	Shiga	NA	NA	Unknown
+Asahi	Shiga	NA	NA	Unknown
+Ki.16	Shiga	NA	NA	Unknown
+Norin 12	Shiga	NA	NA	Unknown
+Norin 7	Shiga	NA	NA	Unknown
+Norin 10	Shiga	NA	NA	Unknown
+To.17	Shiga	NA	NA	Unknown
+Norin 13	Shiga	NA	NA	Unknown
+Ki.32	Shiga	NA	NA	Unknown
+Isuzu	Shiga	NA	NA	Unknown
+Tk.1	Shiga	NA	NA	Unknown
+Norin 18	Shiga	NA	NA	Unknown
+Mikawa	Shiga	NA	NA	Unknown
+Norin 11	Shiga	NA	NA	Unknown
+To.6	Shiga	NA	NA	Unknown
+Murasaki	Shiga	NA	NA	Unknown
+Michinoku	Shiga	NA	NA	Unknown
+Haya	Shiga founder	-1.06733892901959	-0.503086724031661	Long read
+Miyuki	Shiga	NA	NA	Unknown
+Z/B	Australian cross	NA	NA	Unknown
+Ch//Z/B	Australian cross	NA	NA	Unknown
+Ck//Z/B	Australian cross	NA	NA	Unknown
+H//Z/B	Australian cross	NA	NA	Unknown
+Taparoo	Australian cultivar	NA	NA	Unknown
+Maluka	Australian cultivar	-0.119286779335485	-0.567332598148832	Long read
+Eureka	Australian cultivar	-1.29175518562839	-0.329181548412025	Long read
+Barossa	Australian cultivar	-0.594679718738335	-0.268149398420603	Long read
+Yickadee	Australian cultivar	-1.52777991667662	-1.04941062749354	Long read
+Oscar	Australian cultivar	NA	NA	Unknown
+H/Z/B//Ch/Z/B	Australian cross	NA	NA	Unknown
+Rainbow	Australian cultivar	0.0748357379194836	0.02422734869345	Long read
+Trooper	Australian cultivar	-0.709516943178431	-0.277744297125366	Long read
+Marnoo	Australian cultivar	-0.183007888373152	0.204825355129973	Long read
+Insignia	Australian cultivar	0.120174524138012	0.175998794589552	Long read
+Mystic	Australian cultivar	-0.490094488299552	-0.153711166437042	Long read
+Bj/Cp	Australian cross	NA	NA	Unknown
+S/Z	Australian cross	NA	NA	Unknown
+S/Z//N	Australian cross	NA	NA	Unknown
+T//Bj/Cp	Australian cross	NA	NA	Unknown
+S/Z/N//3E	Australian cross	NA	NA	Unknown
+Ck*2//ZB	Australian cross	NA	NA	Unknown
+N/T	Australian cross	NA	NA	Unknown
+N/T//Bj/Cp	Australian cross	NA	NA	Unknown
+Wesbrook	Australian cultivar	0.900649222198534	0.501716358628995	Short read
+Ck*2//ZB//Wesbrook	Australian cross	NA	NA	Unknown
+Dunkeld	Australian cultivar	-0.274966296441008	-0.00810587058303489	Long read
+Wesreo	Australian cultivar	0.709087638154109	-0.0346117303164779	Short read
+Wesbell	Australian cultivar	-0.502011690492934	0.17362924009316	Short read
+Wesway	Australian cultivar	1.59982262547618	0.708793945735517	Short read
+Wesbarker	Australian cultivar	NA	NA	Unknown
+Tatyoon	Australian cultivar	NA	NA	Unknown
+Nindoo	Australian cultivar	NA	NA	Unknown
+RC7	Australian cross	NA	NA	Unknown
+M/3Ck//Z/B	Australian cross	NA	NA	Unknown
+K/G	Australian cross	NA	NA	Unknown
+46C01	Australian cultivar	NA	NA	Unknown
+Castle	Australian cultivar	0.0897682648619369	0.151272479933683	Long read
+Georgie	Australian cultivar	0.470434755721286	0.327698332278056	Short read
+ONAP	Australian cultivar	NA	NA	Unknown
+Narendra	Australian cultivar	0.285088609579393	0.259372086517591	Short read
+RU14	Australian cross	NA	NA	Unknown
+Wesroona	Australian cultivar	-0.0555656702978322	0.16253451870076	Short read
+Bt/C	Australian cross	NA	NA	Unknown
+T//Bt/C	Australian cross	NA	NA	Unknown
+T/Bj/Cp//T/C/Bt	Australian cross	NA	NA	Unknown
+79N013-3	Australian cross	NA	NA	Unknown
+T/Bj/Cp/T/C/Bt//N/T	Australian cross	NA	NA	Unknown
+Siren	Australian cultivar	1.7326669836809	0.840902472169915	Short read
+M/3Ck/Z/B//Wesbrook	Australian cross	NA	NA	Unknown
+M/3Ck/Z/B/Wesbrook//N/T/Bj/Cp	Australian cross	NA	NA	Unknown
+M/3Ck/Z/B/Wesbrook//H/Z/B/Ch/Z/B	Australian cross	NA	NA	Unknown
+Monty	Australian cultivar	-0.14194707687246	0.0276467679022614	Short read
+Scoop	Australian cultivar	-0.979568545316143	-0.62183014242841	Short read
+Outback	Australian cultivar	NA	NA	Unknown
+Drum	Australian cultivar	1.49856433095853	0.896889177916728	Short read
+Clancy	Australian cultivar	1.76272008516515	0.773120967186675	Short read
+Tower-TT	Australian cultivar	NA	NA	Unknown
+TT/79N013-3	Australian cross	NA	NA	Unknown
+Grouse	Australian cultivar	NA	NA	Unknown
+H/Z/B//Ch/Z/B//M/3Ck//Z/B//Wesbrook	Australian cross	NA	NA	Unknown
+Eyre	Australian cultivar	1.26050722416154	0.700558932083931	Short read
+Grace	Australian cultivar	0.0396227811527384	-0.18893802289801	Short read
+TT//H/Z/B	Australian cross	NA	NA	Unknown
+Karoo	Australian cultivar	0.920430363871546	0.23687893442512	Short read
+Pinnacle	Australian cultivar	0.0661531228440817	-0.0946247318702392	Short read
+TI 10	Australian cultivar	0.900250965267056	0.278335278549439	Short read
+Hyden	Australian cultivar	-0.0711979756927967	0.0114206554137531	Short read
+Beacon	Australian cultivar	-0.736874061959099	-0.50811421668824	Short read
+PolimaR/Maluka	Australian cross	NA	NA	Unknown
+PolimaR//2*Maluka	Australian cross	NA	NA	Unknown
+PolimaR//3*Maluka	Australian cross	NA	NA	Unknown
+Crusher//PolimaR//3*Maluka	Australian cross	NA	NA	Unknown
+Surpass600	Australian cultivar	0.320619213559081	0.315719556951903	Short read
+Surpass600TT	Australian cultivar	NA	NA	Unknown
+TornadoTT	Australian cultivar	0.135199399883659	NA	Short read
+Surpass501TT	Australian cultivar	NA	NA	Unknown
+Surpass300TT	Australian cultivar	NA	NA	Unknown
+Surpass400	Australian cultivar	NA	NA	Unknown
+Trilogy	Australian cultivar	1.96559974577422	0.970910825801387	Short read
+Tribune	Australian cultivar	0.952983754657781	0.649870939489381	Short read
+Zephyr	Canadian	0.194977708860223	0.107706159670457	Long read
+Golden	Canadian	1.59435186263886	0.957075940388673	Short read
+Nugget	Canadian	-1.62190728499035	-1.27889435309143	Short read
+Target	Canadian	0.879425692460528	0.452106255981667	Short read
+Shiralee	Australian cultivar	-1.71231450527696	-1.07607022612571	Long read
+Range	Australian cultivar	0.224344713735181	0.113169881886709	Long read
+W///H//Z/B	Australian cross	NA	NA	Unknown
+Tanka	Canadian	1.02769318334237	0.569167544193497	Short read
+Liho	Canadian	NA	NA	Unknown
+Westar	Canadian	0.709087638154078	0.511198055271026	Long read
+Tar/B//Z///S68-2895////Midas	Canadian	NA	NA	Unknown
+Tar/B//Z///S68-2895	Canadian	NA	NA	Unknown
+Tar/B//Z	Canadian	NA	NA	Unknown
+Tar/B	Canadian	NA	NA	Unknown
+Oro	Canadian	0.0718765477774825	0.240016430146129	Short read
+Topas	Canadian	0.101611799521845	-0.0735952281260464	Short read
+He/B	Canadian	NA	NA	Unknown
+Profit	Canadian	NA	NA	Unknown
+B/Tar//Z	Canadian	NA	NA	Unknown
+Alto	Canadian	NA	NA	Unknown
+Stellar	Canadian	NA	NA	Unknown
+Triumph	Canadian	NA	NA	Unknown
+Triton	Canadian	0.454853209811377	0.261750050486251	Short read
+Hanna	Canadian	NA	NA	Unknown
+Oro/Gulle	Canadian	NA	NA	Unknown
+Pivot	Canadian	NA	NA	Unknown
+Midas	Canadian	0.700661490858999	0.434340448382353	Short read
+Tower	Canadian	-0.395411529134309	0.0688794222956672	Short read
+Regent	Canadian	0.616230525694976	0.426751228815427	Short read
+Altex	Canadian	1.15315064865308	0.516590295330829	Short read
+Andor	Canadian	-0.281725338184431	0.312441337821886	Short read
+Reston	Canadian	-0.399659659101194	-0.0874258392534495	Short read
+Tur//Tur/B	Canadian	NA	NA	Unknown
+Tur/B	Canadian	NA	NA	Unknown
+TTL*3/TTB	Canadian	NA	NA	Unknown
+Tan//Tan/Liho	Canadian	NA	NA	Unknown
+Tan/Liho	Canadian	NA	NA	Unknown
+Tar//Tar/Liho	Canadian	NA	NA	Unknown
+Tar/Liho	Canadian	NA	NA	Unknown
+Tur//Tur/Liho	Canadian	NA	NA	Unknown
+Tur/Liho	Canadian	NA	NA	Unknown
+Hamburg	Shiga	NA	NA	Unknown
+Nakatechosen	Shiga	0.145247265992626	0.28431272390615	Short read
+Azuma	Shiga	NA	NA	Unknown
+Isekurodane	Shiga	NA	NA	Unknown
+Yokkaichikurodane	Shiga	NA	NA	Unknown
+Fujishu	Shiga	NA	NA	Unknown
+Wasechosen	Shiga	NA	NA	Unknown
+Abumasari	Shiga	NA	NA	Unknown
+Miezairai	Shiga	NA	NA	Unknown
+Shiromizuzairai	Shiga	NA	NA	Unknown
+Mutu	Other founder	0.030918838431847	-0.00981271210187686	Long read
+Cresus-o-Precose	Other founder	NA	NA	Unknown
+Major	Other founder	-2.03092005046527	-1.09460975849916	Short read
+Ramses	Other founder	-0.692776760674434	-0.488243905305574	Short read
+Kristina	Other founder	NA	NA	Unknown
+BLN938	Other founder	NA	NA	Unknown
+Norin 20	Other founder	NA	NA	Unknown
+BJMT	Other founder	NA	NA	Unknown
+AGA95-1	Other founder	NA	NA	Unknown
+PolimaR	Other founder	NA	NA	Unknown
+Polo/AB896	Other founder	NA	NA	Unknown
+Argentine	Canadian	NA	NA	Unknown
+Kashimazairai	Shiga	NA	NA	Unknown
+Inakasu	Shiga	NA	NA	Unknown
+Washu 1	Shiga	NA	NA	Unknown
+Wasena	Shiga	NA	NA	Unknown
+Isobezairai	Shiga	NA	NA	Unknown
+Aburake shushi	Shiga	NA	NA	Unknown
+Bronowski	Canadian	-0.636099430991038	-0.325030401080253	Long read
+Drakkar	Other founder	-0.239641560585131	0.192691671489864	Long read
+BJ168	Other founder	NA	NA	Unknown
+Sv62.371	Other founder	NA	NA	Unknown
+Erglu	Other founder	-0.640754497605484	-0.324049892815641	Short read
+Garrison	Other founder	NA	NA	Unknown
+ChinaA	Other founder	NA	NA	Unknown
+Cresor	Other founder	-0.0306769678313302	0.353015736664547	Short read
+Tl1	Other founder	NA	NA	Unknown
+Crusher	Other founder	NA	NA	Unknown
+9102	Other founder	NA	NA	Unknown
+PACN161	Other founder	NA	NA	Unknown
+S68-2895	Canadian	NA	NA	Unknown
+Gulle	Canadian	NA	NA	Unknown
+Hermes	Canadian	NA	NA	Unknown
+Tar/B/3/Z/4S68/2	Canadian	NA	NA	Unknown
+B/Tar	Canadian	NA	NA	Unknown
+Bird-rape TT	Canadian	NA	NA	Unknown
+low EA	Canadian	NA	NA	Unknown
+Turret	Canadian	NA	NA	Unknown

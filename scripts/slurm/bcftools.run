@@ -1,0 +1,13 @@
+#!/bin/bash --login
+
+VCF_PATH=/path/to/vcf_output/ # vcfbub output path.
+BGZIP="docker://stephenturner/bgzip:latest" # At time of run was version 1.9.
+VCFS=($(ls $VCF_PATH/*-vb.vcf))
+VCF=${VCFS[$SLURM_ARRAY_TASK_ID]}
+
+singularity \
+    exec \
+        $BGZIP \
+        bgzip \
+            --threads $SLURM_CPUS_PER_TASK \
+            $VCF

@@ -1,0 +1,14 @@
+Bootstrap: docker
+From: python:3.11-slim
+
+%post
+    pip install --no-cache-dir \
+        biopython==1.83 \
+        pandas==2.1.0
+
+%labels
+    Author your.email@example.com
+    Version 1.0
+
+%help
+    Container with biopython and pandas for SRA selection

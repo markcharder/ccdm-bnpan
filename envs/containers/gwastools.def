@@ -1,0 +1,40 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%post
+    # Update and install basic dependencies
+    apt-get update && apt-get install -y \
+        curl \
+        build-essential \
+        git \
+        ca-certificates \
+        && rm -rf /var/lib/apt/lists/*
+    
+    # Install Rust and cargo
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    
+    # Add cargo to PATH for the build
+    . $HOME/.cargo/env
+    
+    # Clone and build gfa2bin
+    git clone https://github.com/MoinSebi/gfa2bin.git /opt/gfa2bin
+    cd /opt/gfa2bin
+    cargo build --release
+    
+    # Copy binary to /usr/local/bin for easy access
+    cp target/release/gfa2bin /usr/local/bin/
+    
+%environment
+    export PATH=/usr/local/bin:$PATH
+
+%runscript
+    exec gfa2bin "$@"
+
+%labels
+    Author Your Name
+    Version 1.0
+
+%help
+    Container with gfa2bin tool built from https://github.com/MoinSebi/gfa2bin
+    
+    Usage: singularity run container.sif [gfa2bin arguments]

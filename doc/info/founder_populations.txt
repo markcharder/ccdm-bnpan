@@ -1,0 +1,5 @@
+total   22
+asian   7
+spring  12
+winter  3
+total-seq   14

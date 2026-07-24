@@ -1,0 +1,11 @@
+Bootstrap: docker
+From: mambaorg/micromamba:git-6665646-cuda11.8.0-ubuntu22.04
+
+%post
+    _entrypoint.sh micromamba config append channels conda-forge
+    _entrypoint.sh micromamba config append channels bioconda
+    _entrypoint.sh micromamba install -c bioconda vcfbub
+
+%environment
+    export PATH="/opt/conda/bin:$PATH"
+    export APPTAINER_SHELL=/usr/local/bin/_apptainer_shell.sh

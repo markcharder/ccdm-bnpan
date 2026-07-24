@@ -1,0 +1,327 @@
+#heliumInput = PEDIGREE
+LineName	Parent
+Hamburg 1	Hamburg
+Aomori 1	Hamburg
+Taisetsu	Hamburg 1
+Norin 9	Nakatechosen
+H.3	Azuma
+K.8	Isekurodane
+Norin 5	Yokkaichikurodane
+K.9	Yokkaichikurodane
+Norin 1	Yokkaichikurodane
+Norin 14	Fujishu
+K.2	Wasechosen
+Norin 2	Wasechosen
+H.4	Wasechosen
+H.1	Wasechosen
+Norin 3	K.2
+Norin 6	Wasechosen
+Norin 8	Wasechosen
+Norin 15	Wasechosen
+Ki.24	K.2
+Ko.1409	Ki.24
+Miho	Aomori 1
+H.25	H.1
+Ki.28	Norin 5
+K.31	K.9
+Abukuma	H.25
+Chisaya	H.25
+Norin 4	H.1
+Norin 16	H.4
+K.30	Norin 5
+Tsukushi	K.31
+Homan	Norin 14
+Aburamasari	Yokkaichikurodane
+Norin 17	K.30
+Tk.8	Norin 17
+Kongo	Tsukushi
+Tokiwa	Tk.8
+Chikuzen	Chisaya
+Oomi	Chisaya
+Dairyu	Abumasari
+Kogane	Norin 17
+Genkai	Norin 15
+Suchiro	Ki.16
+Iwashiro	Norin 16
+Asahi	Norin 16
+Ki.16	Yokkaichikurodane
+Norin 12	Ki.16
+Norin 7	Miezairai
+Norin 10	Miezairai
+To.17	Miezairai
+Norin 13	Miezairai
+Ki.32	Norin 10
+Isuzu	Ki.32
+Tk.1	To.17
+Norin 18	To.17
+Mikawa	Ki.32
+Norin 11	Shiromizuzairai
+To.6	Shiromizuzairai
+Murasaki	To.6
+Michinoku	To.6
+Haya	Michinoku
+Miyuki	Michinoku
+Z/B	Zephyr
+Ch//Z/B	Chisaya
+Ck//Z/B	Chikuzen
+H//Z/B	Haya
+Taparoo	Mutu
+Maluka	H//Z/B
+Eureka	H//Z/B
+Barossa	H//Z/B
+Yickadee	H//Z/B
+Oscar	H//Z/B
+H/Z/B//Ch/Z/B	H//Z/B
+Rainbow	Taparoo
+Trooper	Oscar
+Marnoo	Chikuzen
+Insignia	Eureka
+Mystic	Taparoo
+Bj/Cp	Cresus-o-Precose
+S/Z	Zephyr
+S/Z//N	S/Z
+T//Bj/Cp	Tower
+S/Z/N//3E	S/Z//N
+Ck*2//ZB	Marnoo
+N/T	Tower
+N/T//Bj/Cp	Wesroona
+Wesbrook	S/Z/N//3E
+Ck*2//ZB//Wesbrook	Ck*2//ZB
+Dunkeld	Ck*2//ZB//Wesbrook
+Wesreo	Major
+Wesbell	Major
+Wesway	Ramses
+Wesbarker	Wesbrook
+Tatyoon	Chikuzen
+Nindoo	Chikuzen
+RC7	Ch//Z/B
+M/3Ck//Z/B	Ck//Z/B
+K/G	Kristina
+46C01	K/G
+Castle	Rainbow
+Georgie	BLN938
+ONAP	Bj/Cp
+Narendra	ONAP
+RU14	Marnoo
+Wesroona	Norin 20
+Bt/C	BJMT
+T//Bt/C	Bt/C
+T/Bj/Cp//T/C/Bt	T//Bj/Cp
+79N013-3	N/T
+T/Bj/Cp/T/C/Bt//N/T	N/T
+Siren	Tower-TT
+M/3Ck/Z/B//Wesbrook	M/3Ck//Z/B
+M/3Ck/Z/B/Wesbrook//N/T/Bj/Cp	M/3Ck/Z/B//Wesbrook
+M/3Ck/Z/B/Wesbrook//H/Z/B/Ch/Z/B	H/Z/B//Ch/Z/B
+Monty	M/3Ck/Z/B/Wesbrook//N/T/Bj/Cp
+Scoop	M/3Ck/Z/B/Wesbrook//N/T/Bj/Cp
+Outback	AGA95-1
+Drum	Oscar
+Clancy	Oscar
+Tower-TT	Tower
+TT/79N013-3	79N013-3
+Grouse	H/Z/B//Ch/Z/B//M/3Ck//Z/B//Wesbrook
+H/Z/B//Ch/Z/B//M/3Ck//Z/B//Wesbrook	H/Z/B//Ch/Z/B
+Eyre	Mystic
+Grace	Grouse
+TT//H/Z/B	Tower-TT
+Karoo	Taparoo
+Pinnacle	Eureka
+TI 10	RC7
+Hyden	Siren
+Beacon	Eureka
+PolimaR/Maluka	PolimaR
+PolimaR//2*Maluka	PolimaR/Maluka
+PolimaR//3*Maluka	PolimaR//2*Maluka
+Crusher//PolimaR//3*Maluka	PolimaR//3*Maluka
+Surpass600	Crusher//PolimaR//3*Maluka
+Surpass600TT	Siren
+TornadoTT	Surpass600TT
+Surpass501TT	Siren
+Surpass300TT	Siren
+Surpass400	Polo/AB896
+Trilogy	Surpass400
+Tribune	Surpass400
+Zephyr	Oro
+Golden	Argentine
+Nugget	Argentine
+Target	Tanka
+Norin 14	Wasechosen
+Norin 15	Kashimazairai
+Ki.24	Norin 1
+Ko.1409	Inakasu
+Miho	Washu 1
+H.25	H.3
+Ki.28	Norin 2
+K.31	Norin 3
+Abukuma	Ki.28
+Chisaya	Ki.28
+Norin 16	Wasena
+K.30	Norin 2
+Homan	K.31
+Aburamasari	Fujishu
+Tk.8	Norin 16
+Chikuzen	Abumasari
+Oomi	Tk.8
+Dairyu	Murasaki
+Kogane	Ki.32
+Genkai	K.30
+Suchiro	H.4
+Iwashiro	Norin 13
+Asahi	Isobezairai
+Ki.16	Aburake shushi
+Norin 7	Wasechosen
+Norin 10	Wasechosen
+To.17	Wasechosen
+Norin 13	Wasechosen
+Ki.32	Wasena
+Tk.1	Norin 5
+Mikawa	Tk.1
+Norin 11	Wasechosen
+To.6	Wasechosen
+Murasaki	Inakasu
+Michinoku	Inakasu
+Miyuki	Washu 1
+Z/B	Bronowski
+Ch//Z/B	Z/B
+Ck//Z/B	Z/B
+H//Z/B	Z/B
+Taparoo	Ch//Z/B
+Maluka	Ch//Z/B
+Eureka	Ch//Z/B
+Barossa	Ch//Z/B
+Yickadee	Ch//Z/B
+Oscar	Ch//Z/B
+H/Z/B//Ch/Z/B	Ch//Z/B
+Rainbow	Eureka
+Trooper	Westar
+Marnoo	Z/B
+Insignia	Drakkar
+Mystic	Dunkeld
+Bj/Cp	BJ168
+S/Z	Sv62.371
+S/Z//N	Norin 20
+T//Bj/Cp	Bj/Cp
+S/Z/N//3E	Erglu
+Ck*2//ZB	Chikuzen
+N/T	Norin 20
+N/T//Bj/Cp	Bj/Cp
+Wesbrook	Bj/Cp
+Ck*2//ZB//Wesbrook	Wesbrook
+Dunkeld	N/T//Bj/Cp
+Wesreo	Oro
+Wesbell	Oro
+Wesway	Oro
+Tatyoon	Ck*2//ZB
+Nindoo	Ck*2//ZB
+RC7	M/3Ck//Z/B
+M/3Ck//Z/B	Mutu
+K/G	Garrison
+46C01	Oscar
+Castle	Range
+Georgie	Scoop
+Narendra	RU14
+RU14	ChinaA
+Wesroona	Tower
+Bt/C	Cresor
+T//Bt/C	Tower
+T/Bj/Cp//T/C/Bt	T//Bt/C
+79N013-3	T/Bj/Cp//T/C/Bt
+T/Bj/Cp/T/C/Bt//N/T	T/Bj/Cp//T/C/Bt
+Siren	79N013-3
+M/3Ck/Z/B//Wesbrook	Wesbrook
+M/3Ck/Z/B/Wesbrook//N/T/Bj/Cp	N/T//Bj/Cp
+M/3Ck/Z/B/Wesbrook//H/Z/B/Ch/Z/B	M/3Ck/Z/B//Wesbrook
+Monty	M/3Ck/Z/B/Wesbrook//H/Z/B/Ch/Z/B
+Scoop	M/3Ck/Z/B/Wesbrook//H/Z/B/Ch/Z/B
+Outback	Monty
+Drum	TT/79N013-3
+Clancy	TT/79N013-3
+TT/79N013-3	Tower-TT
+Grouse	H/Z/B//Ch/Z/B
+H/Z/B//Ch/Z/B//M/3Ck//Z/B//Wesbrook	M/3Ck/Z/B//Wesbrook
+Eyre	Tl1
+Grace	Pinnacle
+TT//H/Z/B	H//Z/B
+Karoo	TT//H/Z/B
+Pinnacle	TT//H/Z/B
+TI 10	TT//H/Z/B
+Hyden	Dunkeld
+Beacon	Maluka
+PolimaR/Maluka	Maluka
+PolimaR//2*Maluka	Maluka
+PolimaR//3*Maluka	Maluka
+Crusher//PolimaR//3*Maluka	Crusher
+Surpass600	Dunkeld
+Surpass600TT	Surpass600
+TornadoTT	9102
+Surpass501TT	Polo/AB896
+Surpass300TT	PACN161
+Trilogy	Karoo
+Tribune	Karoo
+Zephyr	Target
+Shiralee	W///H//Z/B
+Range	W///H//Z/B
+W///H//Z/B	H//Z/B
+W///H//Z/B	Wesbrook
+Tanka	Argentine
+Liho	Argentine
+Westar	Tower
+Westar	Tar/B//Z///S68-2895////Midas
+Tar/B//Z///S68-2895////Midas	Midas
+Tar/B//Z///S68-2895////Midas	Tar/B//Z///S68-2895
+Tar/B//Z///S68-2895	S68-2895
+Tar/B//Z///S68-2895	Tar/B//Z
+Tar/B//Z	Zephyr
+Tar/B//Z	Tar/B
+Tar/B	Target
+Tar/B	Bronowski
+Oro	Nugget
+Oro	Liho
+Topas	He/B
+Topas	Gulle
+He/B	Hermes
+Profit	B/Tar//Z
+Profit	Tar/B/3/Z/4S68/2
+B/Tar//Z	B/Tar
+B/Tar//Z	Zephyr
+He/B	Bronowski
+Alto	Altex
+Alto	Andor
+Stellar	TTL*3/TTB
+Triumph	Triton
+Triumph	Topas
+Triton	Bird-rape TT
+Triton	Tower
+Hanna	Bronowski
+Hanna	Oro/Gulle
+Oro/Gulle	Oro
+Oro/Gulle	Gulle
+Pivot	TTL*3/TTB
+Midas	Target
+Midas	low EA
+Tower	TTL*3/TTB
+Regent	TTL*3/TTB
+Altex	TTL*3/TTB
+Andor	TTL*3/TTB
+Reston	TTL*3/TTB
+Tur//Tur/B	Turret
+Tur//Tur/B	Tur/B
+Tur/B	Turret
+Tur/B	Bronowski
+TTL*3/TTB	Tan//Tan/Liho
+TTL*3/TTB	Tar//Tar/Liho
+TTL*3/TTB	Tur//Tur/Liho
+TTL*3/TTB	Tur//Tur/B
+Tan//Tan/Liho	Tanka
+Tan//Tan/Liho	Tan/Liho
+Tan/Liho	Tanka
+Tan/Liho	Liho
+Tar//Tar/Liho	Target
+Tar//Tar/Liho	Tar/Liho
+Tar/Liho	Target
+Tar/Liho	Liho
+Tur//Tur/Liho	Tur/Liho
+Tur//Tur/Liho	Turret
+Tur/Liho	Turret
+Tur/Liho	Liho

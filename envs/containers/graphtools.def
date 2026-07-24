@@ -1,0 +1,30 @@
+Bootstrap: docker
+From: mambaorg/micromamba:git-6665646-cuda11.8.0-ubuntu22.04
+
+%post
+    _entrypoint.sh micromamba config append channels conda-forge
+    _entrypoint.sh micromamba config append channels bioconda
+    _entrypoint.sh micromamba install -c conda-forge -c bioconda gretl
+    _entrypoint.sh micromamba install -c conda-forge -y wget
+    _entrypoint.sh micromamba install -c bioconda graphaligner
+    _entrypoint.sh micromamba install -c conda-forge -y gxx_linux-64
+    _entrypoint.sh micromamba install -c bioconda -y bedtools
+    _entrypoint.sh micromamba install -c bioconda -y mash
+    ln -s /opt/conda/bin/x86_64-conda-linux-gnu-g++ /opt/conda/bin/g++
+    export PATH=/opt/conda/bin/:$PATH
+    _entrypoint.sh micromamba clean -a -y
+    /opt/conda/bin/python3 -m pip install -U pip setuptools build
+    /opt/conda/bin/python3 -m pip install gratools
+    mkdir -p /opt/vg
+    cd /opt/vg
+    /opt/conda/bin/wget https://github.com/vgteam/vg/releases/download/v1.70.0/vg
+    chmod +x vg
+    mkdir -p /opt/kmc
+    cd /opt/kmc
+    /opt/conda/bin/wget https://github.com/refresh-bio/KMC/releases/download/v3.2.4/KMC3.2.4.linux.x64.tar.gz
+    tar xvf KMC3.2.4.linux.x64.tar.gz
+    rm KMC3.2.4.linux.x64.tar.gz
+
+%environment
+    export PATH="/opt/conda/bin:/opt/conda/pkgs/gretl-0.1.1-hc1c3326_2/bin:/opt/vg/:/opt/kmc/bin:$PATH"
+    export APPTAINER_SHELL=/usr/local/bin/_apptainer_shell.sh

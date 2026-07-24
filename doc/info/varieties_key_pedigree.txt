@@ -1,0 +1,67 @@
+ID	LINE_NAME	TYPE
+V10SR	CRESOR	founder
+V17SR	ERGLU	founder
+V28SR	Wesway	cultivar
+V30SR	Tower	founder
+V36SR	Monty	cultivar
+V39SR	Tribune	cultivar
+V95SR	Skipton	cultivar-missing
+V96SR	Rottnest TTC	cultivar-missing
+V97SR	Tawriffic TT	cultivar-missing
+V98SR	ATR-Summit	cultivar-missing
+V103SR	Tarcoola	cultivar-missing
+V104SR	ATR-Grace	cultivar
+V105SR	ATR-Hyden	cultivar
+V106SR	ATR-Spectrum	cultivar-missing
+V107SR	Bugle	cultivar
+V108SR	Georgie	cultivar
+V110SR	Surpass 600	cultivar
+V111SR	Ag-comet or comet	cultivar-missing
+V112SR	Ag-Drover	cultivar-missing
+V113SR	Ag-Muster	cultivar-missing
+V139SR	SCOOP	cultivar
+V140SR	CLANCY	cultivar
+V141SR	DRUM	cultivar
+V142SR	TI1 PINNACLE	cultivar
+V143SR	CHARLTON	cultivar
+V156SR	MAJOR	founder
+V165SR	SIREN	cultivar
+V167SR	Purler	cultivar-missing
+V168SR	AG Emblem	cultivar-missing
+V176SR	CBWA-Trilogy & Trilogy	cultivar
+V177SR	Eyre	cultivar
+V178SR	Sapphire	cultivar-missing
+V181SR	Beacon	cultivar
+V269SR	Oro	founder
+V287SR	Wesbell	cultivar
+V288SR	Wesbrook	cultivar
+V289SR	Wesreo	cultivar
+V290SR	Wesroona	cultivar
+V377SR	Ramses	founder
+V394SR	AV Garnet	cultivar-missing
+V395SR	Warrior CL	cultivar-missing
+V396SR	Bravo TT	cultivar-missing
+V398SR	Thunder TT	cultivar-missing
+V399SR	Thumper	cultivar-missing
+Barossa_verkko	BAROSSA	cultivar
+Bronowski_flye	Bronowski	founder
+Castle_flye	AG-Castle	cultivar
+Chikuzen_verkko	CHIKUZEN	founder
+Chisaya_verkko	CHISAYA	founder
+Drakkar_flye	Drakkar	founder
+Dunkeld_verkko	DUNKELD	cultivar
+Eureka_verkko	EUREKA	cultivar
+Haya_verkko	HAYAC	founder
+Insignia_verkko	Insignia	cultivar
+Maluka_flye	MALUKA	cultivar
+Marnoo_flye	Marnoo	cultivar
+Mutu_flye	MUTU	founder
+Mystic_verkko	Mystic	cultivar
+Rainbow_flye	RAINBOW	cultivar
+Range_verkko	RANGE	cultivar
+Shiralee_flye	SHIRALEE	cultivar
+Stubby_verkko	ATR-Stubby	cultivar-missing
+Trooper_verkko	Trooper	cultivar
+Westar_flye	Westar	founder
+Yickadee_verkko	YICKADEE	cultivar
+Zephyr_flye	Zephyr	founder

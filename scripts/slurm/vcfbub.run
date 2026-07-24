@@ -1,0 +1,22 @@
+#!/bin/bash --login
+
+# For production.
+OUT_PATH="$1"
+REFSAMPLE="X5A_ref#0#"
+VCF_PATH=/path/to/vcfs/ # Path to VCFs before running vcfbub.
+VCFBUB=/envs/containers/vcfbub.sif # Path to vcfbub container. Build from .def.
+
+VCFS=($(ls $VCF_PATH))
+VCF=${VCFS[$SLURM_ARRAY_TASK_ID]}
+VCF_PREFIX=${VCF%.*}
+VCF_REFORMAT="$OUT_PATH"/${VCF_PREFIX}-rf.vcf
+VCF_FILTERED="$OUT_PATH"/${VCF_PREFIX}-vb.vcf
+
+sed "s/$REFSAMPLE//g" $VCF_PATH/$VCF > $VCF_REFORMAT
+
+singularity \
+    exec \
+        $VCFBUB \
+        vcfbub \
+        --max-level 0 \
+        --input $VCF_REFORMAT > $VCF_FILTERED

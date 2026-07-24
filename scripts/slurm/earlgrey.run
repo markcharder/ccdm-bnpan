@@ -1,0 +1,116 @@
+#!/bin/bash --login
+
+# Get the directory of this script.
+SCRIPT_DIR="$(dirname $(dirname "$(realpath "$0")"))"/lib
+
+# Source the script containing the generic argument parser.
+source "$SCRIPT_DIR"/common_functions.sh
+
+# Define the arguments for this script.
+declare -A ARGS=(
+    ["ram|ra|optional"]="Run in RAM or on disk|ram"
+    ["sif|si|optional"]="Path to earlgrey sif|$EG_SIF"
+    ["|g|required"]="Path to genome FASTA file to annotate"
+    ["|s|required"]="Species name to use"
+    ["|o|required"]="Path to output directory for earlgrey"
+    ["|t|optional"]="Number of Threads|12"
+    ["|r|optional"]="RepeatMasker search term (e.g arthropoda/eukarya)|none"
+    ["|l|optional"]="Starting consensus library for an initial mask (in fasta format)|none"
+    ["|i|optional"]="Number of Iterations to BLAST, Extract, Extend|10"
+    ["|f|optional"]="Number flanking basepairs to extract|1000"
+    ["|c|optional"]="Cluster TE library to reduce redundancy?|no"
+    ["|m|optional"]="Remove putative spurious TE annotations <100bp?|yes"
+    ["|d|optional"]="Create soft-masked genome at the end? (yes/no)|no"
+    ["|n|optional"]="Max number of sequences used to generate consensus sequences|20"
+    ["|a|optional"]="Minimum number of sequences required to build a consensus sequence|3"
+    ["|e|optional"]="Run HELIANO as an optional step to detect Helitrons (yes/no)|yes"
+)
+
+# Parse the arguments using the generic parser (defined in common_functions.sh
+export CUSTOM_USAGE=$(cat <<EOF
+Usage: $0
+
+    Additional parameters (optional):
+
+      --ram|-ra <'yes'|'no'>               Whether to run the annotation in RAM or on disk (Default: no)
+      --sif|-si <path>                     Full path to the earlgrey container image (Default: $EG_SIF)
+
+    Paramters for earlGrey:
+
+      Required:
+
+        -g <path>                          Full path to genome FASTA file to annotate.
+        -s <string>                        Species name to use.
+                                           This is only used to name output files.
+                                           Recommended to use the unique variety name.
+        -o <path>                          Path to output directory for earlgrey.
+
+      Optional:
+
+        -t <int>                           Number of Threads. Default: 12.
+        -r <str>                           RepeatMasker search term (e.g arthropoda/eukarya) (Default: none)
+        -l <path>                          Starting consensus library for an initial mask (in fasta format). (Default: none)
+
+                                           '-l' ADDITIONAL HELP:
+                                           To speed up annotation for additional genomes, pass the consensus library from
+                                           the initial run. For example: -l speciesName_summaryFiles/families-fa.strained
+
+        -i <int>                           Number of Iterations to BLAST, Extract, Extend (Default: 10)
+        -f <int>                           Number flanking basepairs to extract (Default: 1000)
+        -c <str>                           Cluster TE library to reduce redundancy? (yes/no, Default: no)
+        -m <str>                           Remove putative spurious TE annotations <100bp? (yes/no, Default: yes)
+
+                                           '-m' ADDITIONAL HELP:
+                                           I think this would be beneficial to avoid over-masking small regions that
+                                           may occur multiple times by chance. It is set to a default of 'yes'.
+
+        -d <str>                           Create soft-masked genome at the end? (yes/no, Default: no)
+        -n <int>                           Max number of sequences used to generate consensus sequences (Default: 20)
+        -a <int>                           minimum number of sequences required to build a consensus sequence (Default: 3)
+        -e <str>                           Run HELIANO as an optional step to detect Helitrons (yes/no, Default: yes)
+
+                                           '-e' ADDITIONAL HELP:
+                                           Note, default set for this option is now 'yes'.
+
+EOF
+)
+
+apptainer \
+    exec \
+
+    # Monitor the earlgrey log files and usage of /tmp.
+    monitor_tmp "$PID" "$EG_TMP" 10 "${FILES_MONITOR[@]}"
+
+    # Make a directory in myscratch for the output and copy it there.
+    out_dir="$out_dir"/"$EG_OUTPUT"
+    mkdir -p "$out_dir"
+    mv "$EG_TMP"/"$EG_OUTPUT"/${variety}_summaryFiles/ "$out_dir"
+
+    # Remove temporary files.
+    rm -r "$EG_TMP"
+
+else
+
+    # Run Earl Grey directly on disk.
+    export EG_OUTPUT="${variety}_${SLURM_JOB_ID}"
+    mkdir -p "$out_dir"
+    singularity \
+        exec \
+        --bind "$genome_dir":"$genome_dir" \
+        --bind "$out_dir":"$out_dir" \
+        --bind /lib64/libreadline.so.7:/lib/x86_64-linux-gnu/libreadline.so.7:ro \
+        --bind /lib64/libtinfo.so.6:/lib/x86_64-linux-gnu/libtinfo.so.6:ro \
+        --bind /usr/bin/bc:/usr/bin/bc:ro \
+        --bind /etc/localtime:/etc/localtime:ro \
+        --bind /usr/share/zoneinfo:/usr/share/zoneinfo:ro \
+        --pwd "$out_dir" \
+        "$sif" \
+        earlGrey \
+            -g "$genome_dir/$genome_file" \
+            -s "$variety" \
+            -o "$out_dir/$EG_OUTPUT" \
+            -t $cpus \
+            -d yes \
+            -e yes
+
+fi

@@ -1,0 +1,271 @@
+#heliumInput = PHENOTYPE
+LineName	Phenotype1=q	Phenotype2=c
+Hamburg 1	0	not sequenced
+Aomori 1	0	not sequenced
+Taisetsu	0	not sequenced
+Norin 9 	0	not sequenced
+H.3	0	not sequenced
+K.8	0	not sequenced
+Norin 5	0	not sequenced
+K.9	0	not sequenced
+Norin 1	0	not sequenced
+Norin 14	0	not sequenced
+K.2	0	not sequenced
+Norin 2	130.5	short reads
+H.4	0	not sequenced
+H.1	0	not sequenced
+Norin 3	0	not sequenced
+Norin 6	0	not sequenced
+Norin 8	74.9999999999999	short reads
+Norin 15	0	not sequenced
+Ki.24	0	not sequenced
+Ko.1409	0	not sequenced
+Miho	0	not sequenced
+H.25	0	not sequenced
+Ki.28	0	not sequenced
+K.31	0	not sequenced
+Abukuma	0	not sequenced
+Chisaya	50.7500000000003	long reads
+Norin 4	56.6578125	short reads
+Norin 16	0	not sequenced
+K.30	0	not sequenced
+Tsukushi	0	not sequenced
+Homan	0	not sequenced
+Aburamasari	0	not sequenced
+Norin 17	0	not sequenced
+Tk.8	0	not sequenced
+Kongo	60.5	short reads
+Tokiwa 	0	not sequenced
+Chikuzen	32.0833333333335	long reads
+Oomi	0	not sequenced
+Dairyu	0	not sequenced
+Kogane 	0	not sequenced
+Genkai 	0	not sequenced
+Suchiro	0	not sequenced
+Iwashiro	0	not sequenced
+Asahi	0	not sequenced
+Ki.16	0	not sequenced
+Norin 12	0	not sequenced
+Norin 7	0	not sequenced
+Norin 10	0	not sequenced
+To.17	0	not sequenced
+Norin 13 	0	not sequenced
+Ki.32	0	not sequenced
+Isuzu	0	not sequenced
+Tk.1	0	not sequenced
+Norin 18	0	not sequenced
+Mikawa 	0	not sequenced
+Norin 11	0	not sequenced
+To.6	0	not sequenced
+Murasaki	0	not sequenced
+Michinoku	0	not sequenced
+Haya	58.3749999999989	long reads
+Miyuki	0	not sequenced
+Z/B	0	not sequenced
+Ch//Z/B	0	not sequenced
+Ck//Z/B	0	not sequenced
+H//Z/B	0	not sequenced
+Taparoo	0	not sequenced
+Maluka	97.5000000000003	long reads
+Eureka	51.5000000000013	long reads
+Barossa	77.7500000000011	long reads
+Yickadee	41.3333333333334	long reads
+Oscar	0	not sequenced
+H/Z/B//Ch/Z/B	0	not sequenced
+Rainbow	103.95	long reads
+Trooper	73.3333333333333	long reads
+Marnoo	94.9999999999999	long reads
+Insignia	105.75	long reads
+Mystic	81.9166666666667	long reads
+Shiralee	35.0000000000004	long reads
+Range	109.833333333333	long reads
+Bj/Cp	0	not sequenced
+S/Z	0	not sequenced
+S/Z//N	0	not sequenced
+T//Bj/Cp	0	not sequenced
+S/Z/N//3E	0	not sequenced
+Ck*2//ZB	0	not sequenced
+N/T	0	not sequenced
+N/T//Bj/Cp	0	not sequenced
+Wesbrook	137.515625	short reads
+Ck*2//ZB//Wesbrook 	0	not sequenced
+Dunkeld	90.3333333333335	long reads
+Wesreo	130.000000000001	short reads
+Wesbell	82.484375	short reads
+Wesway	163.5	short reads
+Wesbarker	0	not sequenced
+Tatyoon	0	not sequenced
+Nindoo	0	not sequenced
+RC7	0	not sequenced
+M/3Ck//Z/B	0	not sequenced
+K/G	0	not sequenced
+46C01	0	not sequenced
+Castle	104.583333333333	long reads
+Georgie	119.249999999999	short reads
+ONAP	0	not sequenced
+Narendra	112.083333333334	short reads
+RU14	0	not sequenced
+Wesroona	100	short reads
+Bt/C	0	not sequenced
+T//Bt/C	0	not sequenced
+T/Bj/Cp//T/C/Bt	0	not sequenced
+79N013-3	0	not sequenced
+T/Bj/Cp/T/C/Bt//N/T	0	not sequenced
+Siren	168.75	short reads
+M/3Ck/Z/B//Wesbrook	0	not sequenced
+M/3Ck/Z/B/Wesbrook//N/T/Bj/Cp	0	not sequenced
+M/3Ck/Z/B/Wesbrook//H/Z/B/Ch/Z/B	0	not sequenced
+Monty	95.3749999999997	short reads
+Scoop	62.5833333333331	short reads
+Outback	0	not sequenced
+Drum 	0	not sequenced
+Clancy 	0	not sequenced
+Tower-TT	0	not sequenced
+N/T/2*T/Bj/Cp//T/C/Bt	0	not sequenced
+TT/79N013-3	0	not sequenced
+Grouse	0	not sequenced
+H/Z/B//Ch/Z/B//M/3Ck//Z/B//Wesbrook	0	not sequenced
+Eyre	150.25	short reads
+Grace	102.583333333334	short reads
+TT//H/Z/B	0	not sequenced
+Karoo	136.916666666666	short reads
+Pinnacle	103.25	short reads
+TI 10	137.5	short reads
+Hyden	98.4166666666661	short reads
+Beacon	72.0833333333335	short reads
+PolimaR/Maluka	0	not sequenced
+PolimaR//2*Maluka	0	not sequenced
+PolimaR//3*Maluka	0	not sequenced
+Crusher//PolimaR//3*Maluka	0	not sequenced
+Surpass600	113.583333333333	short reads
+Surpass600TT	0	not sequenced
+TornadoTT	107.484375	short reads
+Surpass501TT	0	not sequenced
+Surpass300TT	0	not sequenced
+Surpass400	0	not sequenced
+Trilogy	177.333333333332	short reads
+Tribune	138.166666666666	short reads
+Zephyr	108.666666666667	long reads
+Golden	163.166666666667	short reads
+Nugget	37.6666666666669	short reads
+Tanka	142.5	short reads
+Target	135.5	short reads
+Hamburg	0	not sequenced
+Hamburg 1	0	not sequenced
+Nakatechosen	106.75	short reads
+Azuma	0	not sequenced
+Isekurodane 	0	not sequenced
+Yokkaichikurodane	0	not sequenced
+Fujishu	0	not sequenced
+Wasechosen 	0	not sequenced
+K.2	0	not sequenced
+Wasechosen 	0	not sequenced
+K.2	0	not sequenced
+Ki.24	0	not sequenced
+Aomori 1	0	not sequenced
+H.1	0	not sequenced
+Norin 5	0	not sequenced
+K.9	0	not sequenced
+H.25	0	not sequenced
+H.1	0	not sequenced
+H.4	0	not sequenced
+K.31	0	not sequenced
+Norin 14	0	not sequenced
+Yokkaichikurodane	0	not sequenced
+K.30	0	not sequenced
+Norin 17	0	not sequenced
+Tsukushi	0	not sequenced
+Tk.8	0	not sequenced
+Chisaya	50.7500000000003	long reads
+Chisaya	50.7500000000003	long reads
+Abumasari 	0	not sequenced
+Norin 17	0	not sequenced
+Norin 15	0	not sequenced
+Ki.16	0	not sequenced
+Norin 16	0	not sequenced
+Norin 16	0	not sequenced
+Yokkaichikurodane	0	not sequenced
+Ki.16	0	not sequenced
+Miezairai	0	not sequenced
+Norin 10	0	not sequenced
+Ki.32	0	not sequenced
+To.17	0	not sequenced
+To.17	0	not sequenced
+Ki.32	0	not sequenced
+Shiromizuzairai 	0	not sequenced
+To.6	0	not sequenced
+Michinoku	0	not sequenced
+Michinoku	0	not sequenced
+Zephyr	108.666666666667	long reads
+Chisaya	50.7500000000003	long reads
+Chikuzen	32.0833333333335	long reads
+Haya	58.3749999999989	long reads
+Mutu	101	long reads
+H//Z/B	0	not sequenced
+Taparoo	0	not sequenced
+Oscar	0	not sequenced
+Eureka	51.5000000000013	long reads
+Taparoo	0	not sequenced
+Wesbrook	137.515625	short reads
+Shiralee	35.0000000000004	long reads
+Cresus-o-Precose	0	not sequenced
+Zephyr	108.666666666667	long reads
+S/Z	0	not sequenced
+Tower	85.4166666666663	short reads
+S/Z//N	0	not sequenced
+Tower	85.4166666666663	short reads
+Wesroona	100	short reads
+S/Z/N//3E	0	not sequenced
+Ck*2//ZB	0	not sequenced
+Ck*2//ZB//Wesbrook 	0	not sequenced
+Major	22.5000000000002	short reads
+Ramses	74.9999999999997	short reads
+Wesbrook	137.515625	short reads
+Chikuzen	32.0833333333335	long reads
+Ch//Z/B	0	not sequenced
+Ck//Z/B	0	not sequenced
+Kristina	0	not sequenced
+K/G	0	not sequenced
+Rainbow	103.95	long reads
+BLN938	0	not sequenced
+Bj/Cp	0	not sequenced
+ONAP	0	not sequenced
+Marnoo	94.9999999999999	long reads
+Norin 20	0	not sequenced
+BJMT	0	not sequenced
+Bt/C	0	not sequenced
+T//Bj/Cp	0	not sequenced
+N/T	0	not sequenced
+Tower-TT	0	not sequenced
+M/3Ck//Z/B	0	not sequenced
+M/3Ck/Z/B//Wesbrook	0	not sequenced
+H/Z/B//Ch/Z/B	0	not sequenced
+M/3Ck/Z/B/Wesbrook//N/T/Bj/Cp	0	not sequenced
+AGA95-1	0	not sequenced
+Oscar	0	not sequenced
+Tower	85.4166666666663	short reads
+T/Bj/Cp//T/C/Bt	0	not sequenced
+79N013-3	0	not sequenced
+Mystic	81.9166666666667	long reads
+Grouse	0	not sequenced
+Tower-TT	0	not sequenced
+Taparoo	0	not sequenced
+Eureka	51.5000000000013	long reads
+RC7	0	not sequenced
+Siren	168.75	short reads
+Eureka	51.5000000000013	long reads
+PolimaR	0	not sequenced
+PolimaR/Maluka	0	not sequenced
+PolimaR//2*Maluka	0	not sequenced
+PolimaR//3*Maluka	0	not sequenced
+Crusher//PolimaR//3*Maluka	0	not sequenced
+Siren	168.75	short reads
+Surpass600TT	0	not sequenced
+Siren	168.75	short reads
+Siren	168.75	short reads
+Polo/AB896	0	not sequenced
+Surpass400	0	not sequenced
+Oro	105	short reads
+Argentine	0	not sequenced
+Golden	163.166666666667	short reads
+Tanka	142.5	short reads

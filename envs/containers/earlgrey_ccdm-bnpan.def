@@ -1,0 +1,77 @@
+### Download base image for earlgrey without dfam downloaded. ###
+
+Bootstrap: docker
+From: tobybaril/earlgrey:v6.3.1-nodfam
+
+### Configure dfam for plants. ###
+
+%post
+    echo "\n --- Linking busybox bc. --- \n"
+    ln -s /bin/busybox /usr/local/bin/bc
+
+    echo "\n --- Bug fix to read GFFs and BED files with '#' --- \n"
+    sed -i 's/read.table(inBed, header = FALSE, sep = "\\t")/read.table(inBed, header = FALSE, sep = "\\t", comment.char = "")/' /usr/local/share/earlgrey-6.3.1-0/scripts/autoPie.R
+    sed -i 's/read.table(inGff, header = FALSE, sep = "\\t")/read.table(inGff, header = FALSE, sep = "\\t", comment.char = "")/' /usr/local/share/earlgrey-6.3.1-0/scripts/autoPie.R
+    sed -i 's/read.table(bedIn)/read.table(bedIn, comment.char = "")/' /usr/local/share/earlgrey-6.3.1-0/scripts/makeGff.R
+    sed -i 's/read.table(gffIn, sep = "\\t")/read.table(gffIn, sep = "\\t", comment.char = "")/' /usr/local/share/earlgrey-6.3.1-0/scripts/makeGff.R
+
+    echo "Script lines are now:"
+    grep "read.table" /usr/local/share/earlgrey-6.3.1-0/scripts/autoPie.R
+    grep "read.table" /usr/local/share/earlgrey-6.3.1-0/scripts/autoPie.R
+    grep "read.table" /usr/local/share/earlgrey-6.3.1-0/scripts/makeGff.R
+    grep "read.table" /usr/local/share/earlgrey-6.3.1-0/scripts/makeGff.R
+
+    echo -e "\n--- Downloading Dfam. ---\n"
+    
+    echo "Changing directory to /usr/local/share/RepeatMasker/Libraries/famdb..."
+    cd /usr/local/share/RepeatMasker/Libraries/famdb/
+
+    tmpfree=$(df -h "/tmp" | awk '{print $2}' | sed 's/Size//g')
+    echo -e "\nFree space in /tmp is ${tmpfree}."
+    echo -e "\nIf APPTAINER_CACHEDIR and/or SINGULARITY_CACHEDIR"
+    echo -e "are set to a directory with a lot of space. Limited"
+    echo -e "/tmp for the overlay may be the culprit.\n"
+
+    echo "Streaming downloads to reduce /tmp use..."
+    echo "Downloading partitions 5 and 6 for rosids and Viridiplantae..."
+
+    # Download and extract partition 5 (stream to avoid storing compressed file)
+    curl -s 'https://dfam.org/releases/current/families/FamDB/dfam39_full.5.h5.gz' | gunzip > dfam39_full.5.h5
+    
+    echo -e "Partition 5 complete.\n"
+    
+    echo "Downloading and extracting partition 6..."
+
+    # Download and extract partition 6.
+    curl -s 'https://dfam.org/releases/current/families/FamDB/dfam39_full.6.h5.gz' | gunzip > dfam39_full.6.h5
+    
+    echo "Partition 6 complete."
+    
+    echo -e "\nCurrent contents of /usr/local/share/RepeatMasker/Libraries/famdb/"
+    ls -lh
+
+    echo -e "\nConfiguring RepeatMasker..."
+    echo "Changing into /usr/local/share/RepeatMasker/"
+    cd /usr/local/share/RepeatMasker/
+    echo "Running perl ./configure"
+    perl \
+        ./configure \
+        -libdir /usr/local/share/RepeatMasker/Libraries \
+        -trf_prgm /usr/local/bin/trf \
+        -rmblast_dir /usr/local/bin \
+        -hmmer_dir /usr/local/bin \
+        -abblast_dir /usr/local/bin \
+        -crossmatch_dir /usr/local/bin \
+        -default_search_engine rmblast
+    echo -e "--- EarlGrey configuration complete. ---\n"
+
+    # Check rmlib.config.
+    if [ -f Libraries/famdb/rmlib.config ]; then
+        echo "Configure file (rmlib.config) after configuring:"
+        cat Libraries/famdb/rmlib.config
+    else
+        echo "WARNING: rmlib.config not found in `pwd`/Libraries/famdb/"
+        echo "This may affect the build process."
+    fi
+
+    echo -e "\n--- Building sif. ---"
