@@ -22,3 +22,5 @@ This scaffolds (without correction) assembled contigs against the reference geno
 ```bash
 bash scripts/util/scaffold_genomes.sh
 ```
+# Notes on code development
+The code in `envs/R/pedigree-env.R`, specifically the function `plot_synteny`, was built based on the GPU-licensed code from [paf2dotplot](https://github.com/moold/paf2dotplot). All code is distributed under the terms in the accompanying LICENSE file.
