@@ -39,7 +39,8 @@ aws s3 ls "$S3_PATH" | \
 
 # Get the job array size from the file.
 array_size=`wc -l "$WF_PATH"/doc/info/s3-reads.txt | cut -d" " -f 1`
+array_zero="$((array_size - 1))"
 
 # Submit a job array of the appropriate size for download.
-sbatch --array=0-"$((array_size - 1))" --account="$PAWSEY_PROJECT" \
+sbatch --array=0-"$array_zero%20" --account="$PAWSEY_PROJECT" \
     "$WF_PATH"/scripts/slurm/dnldreads.slurm "$WF_PATH"/doc/info/s3-reads.txt
