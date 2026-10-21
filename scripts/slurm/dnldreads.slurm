@@ -18,8 +18,15 @@ if [[ -z "$S3_READS_FILE" ]]; then
 
 fi
 
+# Exit if MYSCRATCH not set.
+if [[ -z "$MYSCRATCH" ]]; then
+    echo "Set the variable \"$MYSCRATCH\"."
+    exit 1
+
+fi
+
 # Set the path for saving the reads files.
-export WF_PATH="$MYSCRATCH"/workflows/ccdm-bnpan/
+WF_PATH="$MYSCRATCH"/workflows/ccdm-bnpan/
 READS_PATH="$WF_PATH"/data/graphmap/reads_illumina/
 mkdir -p "$READS_PATH"
 
