@@ -19,6 +19,7 @@ if [[ -z "$S3_READS_FILE" ]]; then
 fi
 
 # Set the path for saving the reads files.
+export WF_PATH="$MYSCRATCH"/workflows/ccdm-bnpan/
 READS_PATH="$WF_PATH"/data/graphmap/reads_illumina/
 mkdir -p "$READS_PATH"
 
