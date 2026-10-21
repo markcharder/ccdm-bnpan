@@ -1,0 +1,41 @@
+#!/bin/bash --login
+
+# S3 bucket path should be provided as the first argument.
+S3_PATH="$1"
+
+# If it is not provided, then exit.
+if [[ ! -z "$S3_PATH" ]]; then
+    echo "Provide S3 path for downloading short reads."
+    exit 1
+fi
+
+# Exit if MYSCRATCH not set.
+if [[ ! -z "$MYSCRATCH" ]]; then
+    echo "Set the variable \"$MYSCRATCH\"."
+    exit 1
+
+fi
+
+# Exit if project ID not set.
+if [[ ! -z "$PAWSEY_PROJECT" ]]; then
+    echo "Set Pawsey project ID."
+    exit 1
+
+fi
+
+# Get to the workflow root path.
+export WF_PATH="$MYSCRATCH"/workflows/ccdm-bnpan/
+cd "$WF_PATH"
+mkdir -p "$WF_PATH"/doc/info/
+mkdir -p "$WF_PATH"/logs/
+
+# List the files on the s3 server into a file.
+aws s3 ls "$S3_PATH" | \
+    awk -v s3p="$S3_PATH" '{print s3p"/"$NF}' > "$WF_PATH"/doc/info/s3-reads.txt
+
+# Get the job array size from the file.
+array_size=`wc -l "$WF_PATH"/doc/info/s3-reads.txt | cut -d" " -f 1`
+
+# Submit a job array of the appropriate size for download.
+sbatch --array=0-"$((array_size - 1))" \
+    "$WF_PATH"/scripts/slurm/dnldreads.slurm "$WF_PATH"/doc/info/s3-reads.txt
