@@ -2,7 +2,7 @@
 
 #SBATCH --time=24:00:00
 #SBATCH --cpus-per-task=1
-#SBATCH --output=logs/dnldreads_$A_%a.out
+#SBATCH --output=logs/dnldreads_%A_%a.out
 #SBATCH --error=logs/dnldreads_%A_%a.err
 
 # Load the aws command line module.
