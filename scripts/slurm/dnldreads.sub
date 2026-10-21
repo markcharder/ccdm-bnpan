@@ -4,20 +4,21 @@
 S3_PATH="$1"
 
 # If it is not provided, then exit.
-if [[ ! -z "$S3_PATH" ]]; then
+if [[ -z "$S3_PATH" ]]; then
     echo "Provide S3 path for downloading short reads."
     exit 1
+
 fi
 
 # Exit if MYSCRATCH not set.
-if [[ ! -z "$MYSCRATCH" ]]; then
+if [[ -z "$MYSCRATCH" ]]; then
     echo "Set the variable \"$MYSCRATCH\"."
     exit 1
 
 fi
 
 # Exit if project ID not set.
-if [[ ! -z "$PAWSEY_PROJECT" ]]; then
+if [[ -z "$PAWSEY_PROJECT" ]]; then
     echo "Set Pawsey project ID."
     exit 1
 

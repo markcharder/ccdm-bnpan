@@ -12,7 +12,7 @@ module load awscli/1.29.41
 S3_READS_FILE="$1"
 
 # If the file does not exist, exit.
-if [[ ! -z "$S3_READS_FILE" ]]; then
+if [[ -z "$S3_READS_FILE" ]]; then
     echo "Provide the file containing paths to reads in the s3 bucket."
     exit 1
 
