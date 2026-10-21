@@ -62,11 +62,11 @@ fi
 # Run the graphmap pipeline.
 nextflow run \
     main.nf \
-        -profile singularity,hpc,graphmap \
+        -profile singularity,hpc \
         --workflow graphmap
 
 # Run the graphcall pipeline.
 nextflow run \
     main.nf \
-        -profile singularity,hpc,graphcall \
+        -profile singularity,hpc \
         --workflow graphcallg
