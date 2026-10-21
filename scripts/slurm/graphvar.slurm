@@ -54,7 +54,7 @@ if [[ ! -s "$WF_PATH"/data/graphmap/conf/variety_ids.txt ]]; then
 fi
 
 # Also make sure the singularity container is present.
-if [[ ! -s "$WF_PATH"/env/containers/graphtools.sif ]]; then
+if [[ ! -s "$WF_PATH"/envs/containers/graphtools.sif ]]; then
     echo "Container for graphtools not available."
     exit 1
 fi
