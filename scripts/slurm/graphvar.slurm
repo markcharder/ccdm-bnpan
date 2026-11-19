@@ -15,7 +15,7 @@
 #####################################################################
 
 # Load modules.
-module load nextflow/25.04.6
+module load nextflow/25.10.4
 module load singularity/4.3.5-slurm
 
 # Export environment variables to control caching.
