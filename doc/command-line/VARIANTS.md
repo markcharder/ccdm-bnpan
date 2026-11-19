@@ -411,4 +411,3 @@ awk 'BEGIN {print "rs\tchr\tpos"}
     > $gwas_inputs/gwas_blink.map
 
 ```
-

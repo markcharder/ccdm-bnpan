@@ -16,7 +16,7 @@
 
 # Load modules.
 module load nextflow/25.04.6
-module load singularity/4.1.0-slurm
+module load singularity/4.3.5-slurm
 
 # Export environment variables to control caching.
 export NXF_SINGULARITY_CACHEDIR="$MYSCRATCH/.singularity"

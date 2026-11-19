@@ -8,6 +8,16 @@ require(data.table)
 require(GenomicRanges)
 require(vcfR)
 require(reshape2)
+require(ragg)
+
+# Base ggplot theme.
+ggbase_theme <- function(base_size = 11) {
+  theme_classic(base_size = base_size) %+replace%
+    theme(
+      axis.text.x = element_text(size = rel(0.9)),
+      legend.text = element_text(size = rel(0.9))
+    )
+}
 
 # Nei's haplotype diversity.
 
@@ -193,12 +203,12 @@ plot_synteny <-
     )
   if(length(levels(alignments$refID)) > 1){
     queryID_Ref <- apply(queryLenAggPerRef, 2, function(x) rownames(queryLenAggPerRef)[which.max(x)])
-  
+
   } else {
     queryID_Ref <- sapply(queryLenAggPerRef, function(x) names(queryLenAggPerRef)[which.max(x)])
-  
+
   }
-  
+
   alignments$queryID <- factor(alignments$queryID, levels = (levels(alignments$queryID))[order(match(queryID_Ref, levels(alignments$refID)))])
   queryMax <- tapply(alignments$queryLen, alignments$queryID, max)
 
@@ -265,11 +275,11 @@ plot_synteny <-
       xlab(unique(alignments$refID))
 
   } else {
-    gp <- gp + 
+    gp <- gp +
       theme(panel.grid.major.x=element_blank()) +
-      geom_vline(xintercept = cumsum(as.numeric(chromMax)), col="#ebebeb") + 
-      scale_x_continuous(expand = c(0, 0), limits = c(0, sum(as.numeric(chromMax)) + 0.1), 
-        breaks = cumsum(as.numeric(chromMax)) - chromMax/2, labels = substr(levels(alignments$refID), start = 1, stop = 20)) + 
+      geom_vline(xintercept = cumsum(as.numeric(chromMax)), col="#ebebeb") +
+      scale_x_continuous(expand = c(0, 0), limits = c(0, sum(as.numeric(chromMax)) + 0.1),
+        breaks = cumsum(as.numeric(chromMax)) - chromMax/2, labels = substr(levels(alignments$refID), start = 1, stop = 20)) +
       xlab("Reference")
   }
 
@@ -468,7 +478,7 @@ plot_haplotypes <- function(
   vline_end   <- which.min(abs(pos - win_end))
   midline <- round((vline_start + vline_end) / 2)
 
-  # The user specifies the order of the varieties, and 
+  # The user specifies the order of the varieties, and
   # which to keep, in the varieties vector.
   varieties <- intersect(varieties, rownames(mat))
   mat <- mat[varieties, ]
@@ -640,7 +650,7 @@ selscan_af <-
 
 window_pi <-
   fread(
-    "data/pedigree/out/cultivall_basnpsmaf_bcf_pi.txt.windowed.pi"
+    "data/pedigree/out/cultivall_ba_pi.txt.windowed.pi"
   )
 
 window_tajima <-

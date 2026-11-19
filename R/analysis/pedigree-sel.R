@@ -29,7 +29,7 @@ source("envs/R/pedigree-env.R")
 #       This tests the diversity of haplotypes in cultivars and
 #       and founders across 100 kb sliding windows. It finds
 #       windows where the ratio of diversity in cultivars to
-#       founders is an outlier (99th percentile). It does this
+#       founders is an outlier (1st percentile). It does this
 #       first whilst ignoring windows with a ratio of 0 as these
 #       could be due to low diversity in the founders and drift.
 #       It adds to the list of candidates windows with a founder
@@ -38,26 +38,6 @@ source("envs/R/pedigree-env.R")
 #   Basic statistics like pi and tajima's D are also assessed for
 #   context and further interpretation. The final set of candidates
 #   is computed this way:
-#
-#   1. Identify outliers for each of the 3 tests.
-#   2. Identify windows that are:
-#       a. Outliers for at least one of test 1 or 2.
-#       b. Outliers for test 3.
-#
-# Plots:
-#
-#   Manhatten-style plots of the 3 tests and the pi / tajima's D scans
-#   will be generated. The following plots will be made:
-#
-#   1. 3 panels, allele freq test, iHS, and Nei's ratio. Colours:
-#     a. Alternating black / grey by chromosome.
-#     b. AF outliers = red
-#     c. iHS outliers = blue
-#     d. Nei's outliers = green
-#     e. Nei's + AF outliers = goldenrod
-#     f. Nei's + iHS outliers = darksalmon
-#     g. AF + iHS outliers = purple
-#     h. Nei's + AF + iHS outliers = cyan
 #
 ######################################################################
 
@@ -104,13 +84,10 @@ selscan_af_overlaps <- foverlaps(
 
 # Calculate maximum deviation per window - a window can have
 # one or more variants with high deviation.
-# Deviation is absolute because allele frequency can go from
-# high to low or low to high depending on whether it is called
-# as reference or alt.
 selscan_af_windev <-
   selscan_af_overlaps[,
     .(
-      MAX_DEVIATION = max(abs(DEVIATION), na.rm = TRUE),
+      MAX_DEVIATION = max(DEVIATION, na.rm = TRUE),
       MEAN_P_BASE    = mean(P_BASE,    na.rm = TRUE),
       MEAN_P_MODERN  = mean(P_MODERN,  na.rm = TRUE),
       N_SNP = .N
@@ -160,7 +137,7 @@ dir.create("R/tmp", showWarnings = FALSE)
 # Set number of SNPs per window and BCF input.
 pedig_ba_bcf  <- "data/pedigree/inputs/acultivar_basnpsmaf.bcf.gz"
 win_snps_gw   <- 100L
-step_snps_gw  <-  10L
+step_snps_gw  <-  50L
 
 # Get the founder IDs from the key file.
 founder_ids_gw  <-
@@ -206,7 +183,7 @@ selscan_nei <- rbindlist(
       # Print progress.
       print(paste("VCF for", chr, "read"))
 
-      # If there are fewer SNPs in the chromosome than 
+      # If there are fewer SNPs in the chromosome than
       # the window size, skip it.
       if (nrow(gt_chr) < win_snps_gw) return(NULL)
 
@@ -306,6 +283,224 @@ write.table(
 setkey(selscan_af_windev, CHROM, WIN_START, WIN_END)
 setkey(selscan_ihs_filt, CHROM, WIN_START, WIN_END)
 setkey(selscan_nei, CHROM, WIN_START, WIN_END)
+
+# Gets a table of maximum bp coordinates for windows across each
+# test and aggregates to get a single maximum value for each chromosome.
+chrom_max <- rbindlist(list(
+  selscan_af_windev[, .(CHROM, END = WIN_END)],
+  selscan_nei[,        .(CHROM, END = WIN_END)],
+  selscan_ihs_filt[,   .(CHROM, END = WIN_END)],
+  as.data.table(window_pi)[,     .(CHROM, END = BIN_END)],
+  as.data.table(window_tajima)[, .(CHROM, END = BIN_START)]
+))[, .(CHR_LEN = max(END, na.rm = TRUE)), by = CHROM]
+
+# Set the CHROM column to a factor with appropriate level order.
+chrom_max[, CHROM := factor(CHROM, levels = chrom_order)]
+setorder(chrom_max, CHROM)
+
+# Offsets are added for plotting purposes.
+# The offsets are from 0 to the second-last element of a cumulative
+# sum of maximum chromosome lengths.
+chrom_max[, OFFSET := c(0, head(cumsum(as.numeric(CHR_LEN)), -1))]
+
+# Mid-points on chromosomes are added (OFFSET + CHR_LEN / 2) for
+# plot labelling.
+chrom_mids <- chrom_max[, .(CHROM, MID = OFFSET + CHR_LEN / 2)]
+
+# For a given data frame, this function will add an offset to all
+# values in the column labelled in "start_col" to create a new
+# column called "POS_CUM". It also adds a colour for chromosomes
+# using modulo 2 to extract odd / even chromosome IDs in numerical
+# order.
+add_poscum <- function(dt, start_col) {
+  dt <- copy(dt)
+  dt[, CHROM := factor(CHROM, levels = chrom_order)]
+  dt <- merge(dt, chrom_max[, .(CHROM, OFFSET)], by = "CHROM")
+  dt[, POS_CUM := get(start_col) + OFFSET]
+  dt[, ALT_COL := as.integer(CHROM) %% 2 == 0]
+  dt[]
+}
+
+# These are 3 data frames for plotting, one for each test.
+# They should contain CHROM, POS, STAT, WIN_START, WIN_END, TEST
+# The plot is faceted using TEST.
+selscan_af_plot <-
+  selscan_af |>
+  select(CHROM, POS, STAT = DEVIATION) |>
+  mutate(TEST = "AF", WIN_START = POS, WIN_END = POS)
+
+selscan_ihs_plot <-
+  selscan_ihs |>
+  mutate(POS = round((end + start) / 2)) |>
+  select(CHROM = chr, POS, WIN_START = start, WIN_END = end, STAT = score) |>
+  mutate(TEST = "iHS")
+
+selscan_nei_plot <-
+  selscan_nei |>
+  select(CHROM, POS, STAT = RATIO) |>
+  mutate(TEST = "Nei", WIN_START = POS, WIN_END = POS)
+
+selscan_pi_plot <-
+  window_pi |>
+  mutate(POS = round((BIN_END + BIN_START) / 2)) |>
+  select(CHROM, POS, WIN_START = BIN_START, WIN_END = BIN_END, STAT = PI) |>
+  mutate(TEST = "Pi")
+
+selscan_tajima_plot <-
+  window_tajima |>
+  select(
+    CHROM, POS = BIN_START, WIN_START = BIN_START,
+    STAT = TajimaD
+  ) |>
+  mutate(TEST = "Tajima's D", WIN_END = WIN_START + 100000L)
+
+combined_plot <-
+  bind_rows(
+    selscan_af_plot,
+    selscan_ihs_plot,
+    selscan_nei_plot,
+    selscan_pi_plot,
+    selscan_tajima_plot
+  ) |>
+  mutate(
+    ID = paste(CHROM, POS, sep = "_")
+  )
+
+# Set the key to CHROM, WIN_START, WIN_END to detect raw
+# sites overlapping with outlier windows.
+setkey(combined_plot, CHROM, WIN_START, WIN_END)
+
+# IDs (CHROM_POS) for sites from each test are extracted
+# for positions overlapping with outlier windows for each test.
+# Outlier window overlaps with:
+
+## AF test.
+combined_af_ovlps <-
+  unique(
+    foverlaps(
+      combined_plot, selscan_af_windev[OUTLIER == TRUE],
+      type = "any", nomatch = 0L
+    )$ID
+  )
+
+## iHS test.
+combined_ihs_ovlps <-
+  unique(
+    foverlaps(
+      combined_plot, selscan_ihs_filt[OUTLIER == TRUE],
+      type = "any", nomatch = 0L
+    )$ID
+  )
+
+## Nei test.
+combined_nei_ovlps <-
+  unique(
+    foverlaps(
+      combined_plot, selscan_nei[OUTLIER == TRUE],
+      type = "any", nomatch = 0L
+    )$ID
+  )
+
+# Add the chromosome offsets.
+combined_plot <- add_poscum(combined_plot, "POS")
+
+# Category column for colouring. If the site overlaps
+# outliers in all 3 tests, just AF + Nei or none of them.
+combined_plot[,
+  CATEGORY := fcase(
+    (
+      ID %in% combined_af_ovlps & ID %in% combined_nei_ovlps &
+        ID %in% combined_ihs_ovlps
+    ), "AF + Nei + iHS",
+    (ID %in% combined_af_ovlps & ID %in% combined_nei_ovlps), "AF + Nei",
+    default = "none"
+  )
+]
+
+# Set a colour column to bg1 and bg2 for alternating chroms
+# and overlay with test overlaps otherwise.
+combined_plot[, COLOUR_GRP := fcase(
+  CATEGORY == "AF + Nei + iHS", "AF + Nei + iHS",
+  CATEGORY == "AF + Nei",       "AF + Nei",
+  ALT_COL,                      "bg2",
+  default = "bg1"
+)]
+
+# Set factor levels for colour legend.
+combined_plot[, COLOUR_GRP := factor(
+  COLOUR_GRP, levels = c("bg1", "bg2", "AF + Nei", "AF + Nei + iHS")
+)]
+
+# Set factor levels for faceting.
+combined_plot[, TEST := factor(
+  TEST, levels = c("AF", "Nei", "iHS", "Tajima's D", "Pi")
+)]
+
+# Set the order on test then colour group.
+setorder(combined_plot, TEST, COLOUR_GRP)
+
+dir.create("R/plots", showWarnings = FALSE)
+
+p1 <-
+  ggplot(
+    combined_plot,
+    aes(
+      x = POS_CUM, y = STAT, colour = COLOUR_GRP
+    )
+  ) +
+  geom_point(size = 3, alpha = 0.6) +
+  scale_colour_manual(values = c(
+    "bg1" = "black", "bg2" = "grey60",
+    "AF + Nei" = "goldenrod2", "AF + Nei + iHS" = "purple"
+  )) +
+  facet_wrap(~TEST, ncol = 1, scales = "free_y", strip.position = "left") +
+  scale_x_continuous(breaks = chrom_mids$MID, labels = chrom_mids$CHROM) +
+  labs(x = NULL, y = NULL, colour = NULL) +
+  ggbase_theme() +
+  theme(
+    strip.placement = "outside",
+    strip.background = element_blank(),
+    legend.position = "bottom"
+  )
+
+ggsave(
+  "R/plots/f3a_selscan.svg", p1,
+  width = 8, height = 4,
+  device = "svg"
+)
+
+ggsave(
+  "R/plots/f3a_selscan.png", p1,
+  width = 270, height = 100, units = "mm", dpi = 600
+)
+
+# --- 5. Build each panel. ---
+
+p_af <-
+  plot_track(
+    af_plot, "Z_DEVIATION", "AF Z-score",
+    highlight_col = "HIGHLIGHT"
+  ) |>
+  select(CHROM, POS, WIN_START, WIN_END, RATIO, CATEGORY)
+p_nei <- plot_track(nei_plot, "RATIO",  "Nei Z-score",   highlight_col = "HIGHLIGHT")
+# ADJUST "IHS_COLUMN" to match whatever column selscan_ihs_filt actually
+# stores its normalized/windowed iHS summary under (e.g. a fraction-extreme
+# or max |iHS| column from `selscan norm --bp-win`).
+p_ihs <- plot_track(ihs_plot, "score",    "iHS (norm.)")
+p_taj <- plot_track(taj_plot, "TajimaD",       "Tajima's D")
+p_pi  <- plot_track(pi_plot,  "PI",            "Nucleotide diversity (\u03c0)", show_x_labels = TRUE)
+
+# --- 6. Stack: AF + Nei grouped tightly together, iHS/Tajima/Pi below. ---
+
+p_af_nei <- plot_grid(p_af, p_nei, ncol = 1, align = "v", axis = "lr", rel_heights = c(1, 1))
+
+p_full <- plot_grid(
+  p_af_nei, p_ihs, p_taj, p_pi,
+  ncol = 1, align = "hv", axis = "lr",
+  rel_heights = c(2, 1, 1, 1.2)
+)
+
+p_full
 
 # Add an ID column to selscan_nei.
 selscan_nei[, NEI_ID := paste(CHROM, WIN_START, WIN_END, sep = "_")]

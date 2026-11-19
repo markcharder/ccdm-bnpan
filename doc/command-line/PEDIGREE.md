@@ -498,6 +498,7 @@ for chr in "${chrs[@]}"; do
 
     selscan \
         --ihs \
+        --unphased \
         --vcf $chr_vcf \
         --map $chr_map \
         --keep-low-freq \
@@ -525,7 +526,7 @@ bcftools \
         --threads 30 --no-version --output-type b \
         --samples-file $pedig_cultivar_ids \
         --force-samples \
-        $merge_ba_bcf > $cultivpedig_ba_bcf
+        $merge_basnpsmaf_bcf > $cultivpedig_ba_bcf
 
 # Then, get the same variants from just the founder lines.
 bcftools \
@@ -533,7 +534,7 @@ bcftools \
         --threads 30 --no-version --output-type b \
         --samples-file $pedig_founder_ids \
         --force-samples \
-        $merge_ba_bcf > $founders_ba_bcf
+        $merge_basnpsmaf_bcf > $founders_ba_bcf
 
 # Get the positions.
 
@@ -595,57 +596,101 @@ awk \
     af <= 1 {print $1"\t"$2"\t"af}
     af > 1 {print $1"\t"$2"\t"1}' $founders_all_af_full > $pedig_base_af_full
 
-# Calculate base allele frequencies as before.
-
-# Function for estimating expected deviation from global relatedness for each SNP.
+# Function for the allele frequency deviation test.
 normalise_deltap() {
-    
-    base_freqs=$1
-    varpos=$2
 
-    awk -v base_freqs=$base_freqs '
+    base_freqs="$1" # A TSV file containing variant positions and base allele fequencies.
+    varpos="$2" # A TSV file containing variant positions and genotypes ('%CHROM\t%POS[\t%GT]\n').
+
+    # Pass the base frequency file to awk as a variable.
+    awk -v base_freqs="$base_freqs" '
+
+    # Do this before parsing the varpos file.
     BEGIN {
 
+        # Set field separator for input and output.
         FS = "\t";
         OFS = "\t";
 
-        sum_G_offdiag = 317.8384; 
-    
+        # This is hardcoded - see calculation above.
+        sum_G_offdiag = 317.8384 # Set to sum of off-diagonals of kinship matrix.
+        n_total = 34 # Number of individuals in the kinship matrix.
+        total_pairs = n_total * (n_total - 1) # The total non-self pairs (number offdiags).
+        theta_bar = sum_G_offdiag / total_pairs # The average relatedness for a pair.
+
+        # While getline invoked on the base freqs file returns success (1).
         while ((getline < base_freqs) > 0) {
+
+            # Add the base AF ($3) to an associative array, $1 = chrom, $2 = pos.
             p_map[$1"_"$2] = $3;
+
         }
+
         close(base_freqs);
-    
+
+        # Print the header for the output.
         print "CHROM", "POS", "LOCAL_SHARING", "EXPECTED_SHARING", "DEVIATION", "VALID_N", "P_BASE", "P_MODERN";
+
     }
+
+    # This applies to varpos.
     {
+        # Chromosome, position and p - the base allele frequency.
         chr = $1;
         pos = $2;
         p = p_map[chr"_"pos];
     
+        # Skip of base AF is missing or 0.
         if (p == "" || p == 0) next; 
+
+        # Set counter variables to 0.
         sum_c = 0;
         sum_c_sq = 0;
         valid_n = 0;
         sum_raw_alleles = 0
 
+        # From 3 to NF captures genotypes.
         for (i = 3; i <= NF; i++) {
 
-            if ($i ~ /\.\/\./ || $i ~ /\./) continue; 
+            # Skip the genotype if it is missing.
+            if ($i ~ /\.\/\./ || $i ~ /\./) continue;
+
+            # Get the alleles in the genotype.
             split($i, alleles, "/|\\|");
+
+            # The genotype score is either 0 or 2 (0 + 0 or 1 + 1).
             genotype_score = alleles[1] + alleles[2];
+
+            # Add to this to calculate p_modern.
+            sum_raw_alleles += genotype_score;
+
+            # Subtract 2 x base AF (p) to make scale the genotype to the mean base
+            # AF.
             c = genotype_score - (2 * p);
             sum_c += c;
             sum_c_sq += (c * c);
+
+            # Increment valid number of samples seen.
             valid_n++;
+
         }
 
+        # Skip if we have < 2 valid samples (should not happen).
         if (valid_n < 2) next;
+
+        # Non-self square (offdiag) comparisons.
         pairs = valid_n * (valid_n - 1);
+
+        # Local sharing is the sum of centred GTs - sum of c^2.
         local_sharing = (sum_c * sum_c) - sum_c_sq;
-        expected_sharing = sum_G_offdiag * (2 * p * (1 - p));
+
+        # Expected sharing NOW SCALES AVERAGE KINSHIP WITH VALID PAIRS.
+        expected_sharing = pairs * theta_bar * (2 * p * (1 - p));
+
+        # Deviation is (local - expected) / pairs. The average AF deviation per pair.
         deviation = (local_sharing - expected_sharing) / pairs;
-        p_modern = sum_raw_alleles / (2 * valid_n)
+
+        p_modern =  sum_raw_alleles / (2 * valid_n)
         print chr, pos, local_sharing, expected_sharing, deviation, valid_n, p, p_modern;
 
     }' $varpos
@@ -688,7 +733,7 @@ bcftools \
         --threads 30 --no-version --output-type b \
         --samples-file $pocultivar_ids \
         --force-samples \
-        $merge_ba_bcf > $cultivall_ba_bcf
+        $merge_basnpsmaf_bcf > $cultivall_ba_bcf
 
 bcftools \
     index \
@@ -700,7 +745,7 @@ bcftools \
         --threads 30 --no-version --output-type b \
         --samples-file $pedig_all_ids \
         --force-samples \
-        $merge_ba_bcf > $pedig_ba_bcf
+        $merge_basnpsmaf_bcf > $pedig_ba_bcf
 
 bcftools \
     index \
