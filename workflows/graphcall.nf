@@ -154,7 +154,11 @@ workflow GRAPHCALL_GAM {
     vg_filter(vg_filter_in_ch)
 
     // Generate read coverage pack files.
-    vg_pack(vg_filter.out.gam)
+    vg_filter.out.gam
+        .combine(gbz)
+        .set { vg_pack_in_ch }
+
+    vg_pack(vg_pack_in_ch)
 
     // Combine filtered gams with packs, gbz and snarls.
     vg_filter.out.gam
@@ -238,7 +242,7 @@ process bcftools_merge {
 }
 
 process bcftools_merge_final {
-    
+
     label 'process_high'
     label 'bcftools'
     publishDir "${params.graphcall_out_dir}/bcftools_merge"
@@ -262,7 +266,7 @@ process bcftools_merge_final {
                 --output-type z \
                 --output bcftools-merged_f.vcf.gz \
                 ${vcfzs.join(' ')}
-        
+
         bcftools index \
             --threads ${task.cpus} \
             bcftools-merged_f.vcf.gz
@@ -295,7 +299,7 @@ process bcftools_merge_final {
 }
 
 workflow GRAPHCALL_BCFMERGE {
-    
+
     // Get a list of vcf.gz files to merge.
     channel
         .fromPath(params.graphcall_bcftools_vcfz)
