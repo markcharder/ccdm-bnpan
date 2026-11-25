@@ -69,4 +69,6 @@ nextflow run \
 nextflow run \
     main.nf \
         -profile singularity,hpc \
-        --workflow graphcallg
+        --workflow graphcallg \
+        --graphcall_graph "$WF_PATH"/data/graphmap/graph/ccdm-bnpan.gbz \
+        --graphcall_gams "$WF_PATH"/data/graphmap/out/vg_giraffe/*.gam
